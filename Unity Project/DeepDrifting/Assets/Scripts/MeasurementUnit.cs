@@ -57,6 +57,7 @@ public class MeasurementUnit : MonoBehaviour
     
     void OnDrawGizmosSelected()
     {
+        if (!rBody) return;
         //Debug.DrawRay(car.transform.position, Vector3.forward, Color.green);
 
         //vector facing in direction of heading (forward)

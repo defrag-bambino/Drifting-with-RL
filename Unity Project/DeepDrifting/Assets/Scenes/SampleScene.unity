@@ -388,8 +388,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axle: 1
   mode: 0
-  stiffness: 0.3
-  rigidity: 0.5
+  stiffness: 0.762
+  rigidity: 0.879
   springRate: 20000
   antiRollRate: 20000
 --- !u!222 &712964075046829399
@@ -786,7 +786,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069814028828473064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.365, z: 0.498}
+  m_LocalPosition: {x: 0, y: 0.38, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2069814030382830916}
@@ -816,7 +816,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069814028897434856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -1.1}
+  m_LocalPosition: {x: -0, y: 0, z: -0.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2069814030382830916}
@@ -5662,7 +5662,7 @@ MonoBehaviour:
     mode: 1
     inertiaColliders: []
     chassisDimensions: {x: 1.5, y: 0.3, z: 4}
-    inertiaBias: 1.5
+    inertiaBias: -0.09
     inertiaTensor: {x: 2000, y: 2200, z: 400}
     inertiaTensorRotation: {x: 0, y: 0, z: 0}
   axles:
@@ -5728,22 +5728,22 @@ MonoBehaviour:
     preload: 0
     stiffness: 0.5
   steering:
-    maxSteerAngle: 50.5
-    toeAngle: 2.1
-    ackerman: 1
+    maxSteerAngle: 65
+    toeAngle: -3
+    ackerman: 0
     ackermanReference: {fileID: 2069814028897434839}
-    ratioReference: {fileID: 0}
+    ratioReference: {fileID: 2069814028897434839}
   brakes:
     maxBrakeTorque: 2800
     brakeBias: 0.68
     handbrakeTorque: 1500
     handbrakeAxle: 0
   tireFriction:
-    model: 3
+    model: 0
     settings:
-      adherent: {x: 0.5, y: 0.6}
-      peak: {x: 2, y: 0.8}
-      limit: {x: 12, y: 0.6}
+      adherent: {x: 0.5, y: 1.23}
+      peak: {x: 2, y: 0.9}
+      limit: {x: 12, y: 0.75}
       a: 0.6
       b: 0
       c: 0
@@ -5755,25 +5755,25 @@ MonoBehaviour:
       E: -2
     frictionMultiplier: 1
   engine:
-    idleRpm: 1100
-    peakRpm: 8336
-    maxRpm: 9000
+    idleRpm: 100
+    peakRpm: 23000
+    maxRpm: 23010
     idleRpmTorque: 106
     peakRpmTorque: 188
     idleRpmCurveBias: 0.95700055
     peakRpmCurveBias: 0
-    inertia: 0.15
+    inertia: 0.05
     frictionTorque: 20
     rotationalFriction: 0.06
     viscousFriction: 0.007
     torqueCap: 1
     torqueCapLimit: 210
-    rpmLimiter: 1
+    rpmLimiter: 0
     rpmLimiterMode: 1
-    rpmLimiterMax: 8700
+    rpmLimiterMax: 8000
     rpmLimiterCutoffTime: 0.075
     idleControl: 1
-    maxIdleThrottle: 0.8
+    maxIdleThrottle: 0.1
     activeIdleRange: 0.25
     activeIdleBias: 0.25
     canStall: 0
@@ -5789,7 +5789,7 @@ MonoBehaviour:
   gearbox:
     type: 0
     forwardGearRatios:
-    - 3.56
+    - 5.56
     - 2.269
     - 1.645
     - 1.187
@@ -5951,6 +5951,7 @@ Transform:
   - {fileID: 2069814028691118677}
   - {fileID: 6543824245337720501}
   - {fileID: 3984516580029189120}
+  - {fileID: 3984516580029136330}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5990,6 +5991,7 @@ GameObject:
   - component: {fileID: 2069814030382830921}
   - component: {fileID: 2069814030382830920}
   - component: {fileID: 2069814030382830922}
+  - component: {fileID: 2069814030382830923}
   m_Layer: 8
   m_Name: VPP Sport Coupe
   m_TagString: Untagged
@@ -6013,15 +6015,17 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  MaxDistFromPath: 6
+  MaxDistFromPath: 8
   trajectories:
   - {fileID: 2764897539855402909, guid: 5ff97ae558ea476f7861f15cb37bade0, type: 3}
+  - {fileID: 2764897539855402909, guid: 712adf8305e11697cb871adb1d68b147, type: 3}
+  - {fileID: 2764897539855402909, guid: b9040b6e0123a10d39f5260566ee0f72, type: 3}
   - {fileID: 2764897539855402909, guid: 5a1e26f0b966386c9bf26d01442fdba5, type: 3}
   - {fileID: 2764897539855402909, guid: ae136cef84a3cea39b00b52bf92e9c5e, type: 3}
-  - {fileID: 2764897539855402909, guid: b9040b6e0123a10d39f5260566ee0f72, type: 3}
-  - {fileID: 2764897539855402909, guid: 712adf8305e11697cb871adb1d68b147, type: 3}
   NextKnownWaypoints: 5
-  SteerSpeedDegPerSec: 250
+  SteerSpeedDegPerSec: 450
+  PointPopupPrefab: {fileID: 4984086690947028806, guid: 1d0105f28e48a03c48412cf1332eeca0,
+    type: 3}
 --- !u!114 &2069814030382830920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6080,6 +6084,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SideSlip: 0
   LocalVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &2069814030382830923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069814030382830918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
 --- !u!114 &2069814030382830924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6579,7 +6599,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069814028691118678}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -674611101, guid: b8873f7cd5fec6f49a4b37228b9b23ac, type: 3}
   m_Name: 
@@ -7973,13 +7993,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3984516580029485076}
-  m_LocalRotation: {x: 0.6427876, y: 0, z: 0, w: 0.7660445}
-  m_LocalPosition: {x: 0, y: 28.97, z: 0}
+  m_LocalRotation: {x: 0.29529122, y: -0, z: -0, w: 0.9554073}
+  m_LocalPosition: {x: 0.4, y: 12.889999, z: -21.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3984516580029189120}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
+  m_Father: {fileID: 2069814030382830916}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 34.35, y: 0, z: 0}
 --- !u!4 &3984516580029189120
 Transform:
   m_ObjectHideFlags: 0
@@ -7990,8 +8010,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 3984516580029136330}
+  m_Children: []
   m_Father: {fileID: 2069814030382830916}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

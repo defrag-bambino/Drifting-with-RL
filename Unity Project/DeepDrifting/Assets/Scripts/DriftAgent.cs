@@ -28,6 +28,8 @@ public class DriftAgent: Agent
 
     public float SteerSpeedDegPerSec = 100;//60° * pi/180 = 1,047rad
 
+    public GameObject PointPopupPrefab;
+
 
 
     void Awake()
@@ -67,9 +69,9 @@ public class DriftAgent: Agent
 
         Vector3 localVel = imu.LocalVelocity;
         Vector2 localVelXZ = new Vector2(localVel.x, localVel.z);
-        sensor.AddObservation(localVelXZ / 20f);
+        sensor.AddObservation(localVelXZ / 300f);
 
-        sensor.AddObservation(Mathf.Abs(rb.angularVelocity.y) / 10f);
+        sensor.AddObservation(-rb.angularVelocity.y / 10f);
 
         sensor.AddObservation(Mathf.Abs(imu.SideSlip) / 180f);
 
@@ -95,13 +97,25 @@ public class DriftAgent: Agent
         //if( VPcontrol.data.Get(Channel.Vehicle, VehicleData.EngineRpm) / 1000.0f > 4500f ) VPcontrol.data.Set(Channel.Input, InputData.ManualGear, 2);
         //if( VPcontrol.data.Get(Channel.Vehicle, VehicleData.EngineRpm) / 1000.0f < 2000f ) VPcontrol.data.Set(Channel.Input, InputData.ManualGear, 1);
 
-        VPinput.externalSteer = SmoothSteering(vectorAction[0]);
-        VPinput.externalThrottle = PathMathSupports.Remap(vectorAction[1], -1f, 1f, 0f, 1f);
-        if (VPinput.externalThrottle <= 0.1){
-            VPinput.externalHandbrake = 1;
-        }else{
-            VPinput.externalHandbrake = 0f;
+        if (vectorAction[0] == 0f){
+            //VPinput.externalSteer = SmoothSteering(imu.SideSlip / VPcontrol.steering.maxSteerAngle); //Gyro
+            VPinput.externalSteer = SmoothSteering(-rb.angularVelocity.y * 0.030516f);        //mapping to degrees per second);
         }
+        else{
+            VPinput.externalSteer = SmoothSteering(vectorAction[0]);
+        }
+        
+
+        //Debug.Log(rb.angularVelocity.y);
+
+        //VPinput.externalThrottle = PathMathSupports.Remap(vectorAction[1], -1f, 1f, 0f, 1f);
+        VPinput.externalThrottle += vectorAction[1] * 0.05f;
+        VPinput.externalThrottle = Mathf.Clamp(VPinput.externalThrottle, 0f, 1f);
+        //if (VPinput.externalThrottle <= 0.1){
+            //VPinput.externalHandbrake = 1;
+        //}else{
+            //VPinput.externalHandbrake = 0f;
+        //}
 
 
         if (traj.getDistOfCarToPath(this.transform) >= MaxDistFromPath) //|| Mathf.Abs(imu.SideSlip) > 110f)
@@ -114,10 +128,11 @@ public class DriftAgent: Agent
 
         traj.drawWpLines(this.transform, NextKnownWaypoints);
 
-        float rew = -0.0001f;
+        float rew = 0.0f;//-0.0001f;
+        //TODO: Add a term that penalizes changes in sideslip angle, to make the drift more smooth. e.g. use slipangle derivative.
 
         if(traj.getDistOfCarToCurrWpOrthgLine(this.transform) <= 0.2f){
-            rew += 1f/20f * (MaxDistFromPath - traj.getDistOfCarToOrthgLineWhilePassing(this.transform)) / MaxDistFromPath;
+            rew += 1/20f * (MaxDistFromPath - traj.getDistOfCarToOrthgLineWhilePassing(this.transform)) / MaxDistFromPath;//1/20f *
 
             int desiredAngleSign = PathMathSupports.PointLeftOrRightFromLine(traj.getWaypointRelativeToCurrent(-1), traj.getWaypointRelativeToCurrent(1), traj.getWaypointRelativeToCurrent(0));
             int currentAngleSign = (int)Mathf.Sign(imu.SideSlip);
@@ -135,7 +150,9 @@ public class DriftAgent: Agent
             //} 
 
         SetReward(rew);
-
+        //show reward above car
+        Instantiate(PointPopupPrefab, transform.position, Camera.main.transform.rotation).GetComponent<pointPopup>().display(rew);
+        //print(rew);
         traj.switchToNextWaypoint();
         }
 

@@ -31,7 +31,7 @@ However, I personally only play around with the following:
 
 
 ## Used Packages & (minimum tested) Versions
-+ Unity 2020.2.0f1
++ Unity 2020.2.0f1 & 2020.3.1.f1 (should be fine with higher versions)
 	- [ML Agents](https://github.com/Unity-Technologies/ml-agents/blob/release_12_docs/docs/Installation.md) Package *(com.unity.ml-agents)* 1.7.2
 	- Edys Vehicle Physics (from late 2020)
 	- PathCreator (from early 2021)
