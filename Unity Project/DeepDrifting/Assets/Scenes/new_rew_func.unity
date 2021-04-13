@@ -304,7 +304,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268731845}
-  m_Material: {fileID: 13400000, guid: 86b04e5a900455e42b8bfd5a164216fe, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -5739,11 +5739,11 @@ MonoBehaviour:
     handbrakeTorque: 1500
     handbrakeAxle: 0
   tireFriction:
-    model: 0
+    model: 3
     settings:
-      adherent: {x: 0.5, y: 1.32}
-      peak: {x: 2, y: 0.9}
-      limit: {x: 12, y: 0.75}
+      adherent: {x: 0.5, y: 1.4}
+      peak: {x: 2, y: 1.6}
+      limit: {x: 12, y: 1.4}
       a: 0.6
       b: 0
       c: 0
@@ -6025,6 +6025,8 @@ MonoBehaviour:
   SteerSpeedDegPerSec: 400
   PointPopupPrefab: {fileID: 4984086690947028806, guid: 1d0105f28e48a03c48412cf1332eeca0,
     type: 3}
+  TireFrictionRandomMin: 0.8
+  TireFrictionRandomMax: 1.5
 --- !u!114 &2069814030382830920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7976,13 +7978,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3984516580029485076}
-  m_LocalRotation: {x: 0.29529122, y: -0, z: -0, w: 0.9554073}
+  m_LocalRotation: {x: 0.30137148, y: 0, z: 0, w: 0.95350677}
   m_LocalPosition: {x: 0.4, y: 12.889999, z: -21.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2069814030382830916}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 34.35, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 35.08, y: 0, z: 0}
 --- !u!4 &3984516580029189120
 Transform:
   m_ObjectHideFlags: 0

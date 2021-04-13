@@ -30,6 +30,9 @@ public class DriftAgent_new_rew_func: Agent
 
     public GameObject PointPopupPrefab;
 
+    public float TireFrictionRandomMin = 0.8f;
+    public float TireFrictionRandomMax = 1.5f;
+
 
 
     void Awake()
@@ -62,11 +65,12 @@ public class DriftAgent_new_rew_func: Agent
 
         VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, 0f);
         VPcontrol.data.Set(Channel.Input, InputData.ManualGear, 1);
+
+        randomizeTireFriction();
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-
         Vector3 localVel = imu.LocalVelocity;
         Vector2 localVelXZ = new Vector2(localVel.x, localVel.z);
         sensor.AddObservation(localVelXZ / 300f);
@@ -153,6 +157,10 @@ public class DriftAgent_new_rew_func: Agent
                 //https://www.wolframalpha.com/input/?i=plot+1%2F+%281+%2B+abs%28%28x-c%29%2Fa%29%5E%282b%29%29+for+a%3D15%2Cb%3D1.5%2Cc%3D50+from+x%3D0+to+90
                 traj.switchToNextWaypoint();
                 Instantiate(PointPopupPrefab, transform.position, Camera.main.transform.rotation).GetComponent<pointPopup>().display(rew);
+
+
+                //quick and dirty way of display current tire friction. I should probably make a nice GUI display on screen...
+                Instantiate(PointPopupPrefab, traj.transform.position, Camera.main.transform.rotation).GetComponent<pointPopup>().display(VPcontrol.tireFriction.settings.peak.y);
             } 
             
 
@@ -166,6 +174,15 @@ public class DriftAgent_new_rew_func: Agent
         //}
 
         
+    }
+
+    private void randomizeTireFriction(){
+        //based on the initial parametric tire friction model that edys vehicle physics came with.
+        //this just shifts the curve up and down randomly
+        float newVal = Random.Range(TireFrictionRandomMin, TireFrictionRandomMax);
+        VPcontrol.tireFriction.settings.peak = new Vector2(2.0f, newVal);
+        VPcontrol.tireFriction.settings.adherent = new Vector2(0.5f, newVal - 0.4f);
+        VPcontrol.tireFriction.settings.limit = new Vector2(12.0f, newVal - 0.25f);
     }
 
     public override void Heuristic(float[] actionsOut)

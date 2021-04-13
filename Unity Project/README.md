@@ -1,7 +1,7 @@
 # Unity Project file(s)
 
 ## Usage
-Import the **DeepDrifting** folder as a Project into Unity. Open the "SampleScene", if not already open.
+Import the **DeepDrifting** folder as a Project into Unity. Open the "SampleScene" or "new_rew_func", if not already open.
 Play around with the settings and adapt the simulation to your liking.
 Hit *build* to create an executable(REF_TO_EXECUTABLES_FOLDER) or train your AI directly in the editor (See ML Agents Documentation).
 
