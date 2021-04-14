@@ -304,7 +304,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268731845}
-  m_Material: {fileID: 13400000, guid: 86b04e5a900455e42b8bfd5a164216fe, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -786,7 +786,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069814028828473064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.38, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0.41, z: 0.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2069814030382830916}
@@ -5729,8 +5729,8 @@ MonoBehaviour:
     stiffness: 0.5
   steering:
     maxSteerAngle: 65
-    toeAngle: -3
-    ackerman: 0
+    toeAngle: -4.4
+    ackerman: 1
     ackermanReference: {fileID: 2069814028897434839}
     ratioReference: {fileID: 2069814028897434839}
   brakes:
@@ -5739,11 +5739,11 @@ MonoBehaviour:
     handbrakeTorque: 1500
     handbrakeAxle: 0
   tireFriction:
-    model: 0
+    model: 3
     settings:
-      adherent: {x: 0.5, y: 1.23}
+      adherent: {x: 0.5, y: 0.72}
       peak: {x: 2, y: 0.9}
-      limit: {x: 12, y: 0.75}
+      limit: {x: 12, y: 0.72}
       a: 0.6
       b: 0
       c: 0
@@ -5756,8 +5756,8 @@ MonoBehaviour:
     frictionMultiplier: 1
   engine:
     idleRpm: 100
-    peakRpm: 23000
-    maxRpm: 23010
+    peakRpm: 15000
+    maxRpm: 15010
     idleRpmTorque: 106
     peakRpmTorque: 188
     idleRpmCurveBias: 0.95700055
@@ -5991,7 +5991,6 @@ GameObject:
   - component: {fileID: 2069814030382830921}
   - component: {fileID: 2069814030382830920}
   - component: {fileID: 2069814030382830922}
-  - component: {fileID: 2069814030382830923}
   m_Layer: 8
   m_Name: VPP Sport Coupe
   m_TagString: Untagged
@@ -6015,17 +6014,21 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  MaxDistFromPath: 8
+  MaxDistFromPath: 10
   trajectories:
   - {fileID: 2764897539855402909, guid: 5ff97ae558ea476f7861f15cb37bade0, type: 3}
   - {fileID: 2764897539855402909, guid: 712adf8305e11697cb871adb1d68b147, type: 3}
   - {fileID: 2764897539855402909, guid: b9040b6e0123a10d39f5260566ee0f72, type: 3}
   - {fileID: 2764897539855402909, guid: 5a1e26f0b966386c9bf26d01442fdba5, type: 3}
   - {fileID: 2764897539855402909, guid: ae136cef84a3cea39b00b52bf92e9c5e, type: 3}
+  - {fileID: 2764897539855402909, guid: d7b9d9b2a3416e8cb96261611b673de0, type: 3}
+  - {fileID: 2764897539855402909, guid: a0759bda22d9e95bbbc9381b2119976d, type: 3}
   NextKnownWaypoints: 5
   SteerSpeedDegPerSec: 450
   PointPopupPrefab: {fileID: 4984086690947028806, guid: 1d0105f28e48a03c48412cf1332eeca0,
     type: 3}
+  TireFrictionRandomMin: 0.7
+  TireFrictionRandomMax: 1.1
 --- !u!114 &2069814030382830920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6084,22 +6087,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SideSlip: 0
   LocalVelocity: {x: 0, y: 0, z: 0}
---- !u!114 &2069814030382830923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2069814030382830918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
 --- !u!114 &2069814030382830924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6599,7 +6586,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069814028691118678}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -674611101, guid: b8873f7cd5fec6f49a4b37228b9b23ac, type: 3}
   m_Name: 

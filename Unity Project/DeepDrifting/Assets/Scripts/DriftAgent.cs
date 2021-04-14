@@ -30,6 +30,10 @@ public class DriftAgent: Agent
 
     public GameObject PointPopupPrefab;
 
+    	
+	public float TireFrictionRandomMin = 0.7f;
+	public float TireFrictionRandomMax = 1.1f;
+
 
 
     void Awake()
@@ -62,6 +66,8 @@ public class DriftAgent: Agent
 
         VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, 0f);
         VPcontrol.data.Set(Channel.Input, InputData.ManualGear, 1);
+
+        randomizeTireFriction();
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -89,7 +95,8 @@ public class DriftAgent: Agent
 
         sensor.AddObservation(VPcontrol.data.Get(Channel.Vehicle, VehicleData.EngineRpm) / (1000.0f * VPcontrol.engine.maxRpm ));
 
-        sensor.AddObservation(CurrentSteerDirection);
+        //sensor.AddObservation(CurrentSteerDirection);
+        sensor.AddObservation(traj.getDistOfCarToPath(transform) / MaxDistFromPath);
     }
 
     public override void OnActionReceived(float[] vectorAction)
@@ -121,7 +128,7 @@ public class DriftAgent: Agent
         if (traj.getDistOfCarToPath(this.transform) >= MaxDistFromPath) //|| Mathf.Abs(imu.SideSlip) > 110f)
         {
             //print("too far from path, resetting..." + traj.getDistOfCarToPath(this.transform));
-            SetReward(-0.1f);
+            SetReward(-10f);
             EndEpisode();
         }
 
@@ -149,14 +156,25 @@ public class DriftAgent: Agent
                 //https://www.wolframalpha.com/input/?i=plot+1%2F+%281+%2B+abs%28%28x-c%29%2Fa%29%5E%282b%29%29+for+a%3D15%2Cb%3D1.5%2Cc%3D50+from+x%3D0+to+90
             //} 
 
+            //quick and dirty way of display current tire friction. I should probably make a nice GUI display on screen...
+                Instantiate(PointPopupPrefab, traj.transform.position, Camera.main.transform.rotation).GetComponent<pointPopup>().display(VPcontrol.tireFriction.settings.peak.y);
+            
+
         SetReward(rew);
         //show reward above car
         Instantiate(PointPopupPrefab, transform.position, Camera.main.transform.rotation).GetComponent<pointPopup>().display(rew);
         //print(rew);
         traj.switchToNextWaypoint();
         }
-
-        
+    }
+	
+    private void randomizeTireFriction(){
+        //based on the initial parametric tire friction model that edys vehicle physics came with.
+        //this just shifts the curve up and down randomly
+        float newVal = Random.Range(TireFrictionRandomMin, TireFrictionRandomMax);
+        VPcontrol.tireFriction.settings.peak = new Vector2(2.0f, newVal);
+        VPcontrol.tireFriction.settings.adherent = new Vector2(0.5f, newVal - 0.4f);
+        VPcontrol.tireFriction.settings.limit = new Vector2(12.0f, newVal - 0.25f);
     }
 
     public override void Heuristic(float[] actionsOut)

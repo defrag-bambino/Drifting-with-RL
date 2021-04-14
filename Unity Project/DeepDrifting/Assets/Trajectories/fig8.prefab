@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &982951806334259858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727743702648938385}
+  - component: {fileID: 8605769759648775997}
+  - component: {fileID: 2764897539855402909}
+  m_Layer: 0
+  m_Name: fig8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1727743702648938385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982951806334259858}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.02, y: 0, z: -0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8605769759648775997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982951806334259858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorData:
+    _bezierPath:
+      points:
+      - {x: 4.65377, y: 0, z: -2.0695708}
+      - {x: 6.845176, y: 0, z: -3.9560795}
+      - {x: 10.250538, y: 0, z: -7.2236676}
+      - {x: 9.980362, y: 0, z: -10.102588}
+      - {x: 9.576911, y: 0, z: -14.401655}
+      - {x: 4.251028, y: 0, z: -20.4487}
+      - {x: -0.06674622, y: 0, z: -20.408876}
+      - {x: -4.4269323, y: 0, z: -20.36866}
+      - {x: -9.886566, y: 0, z: -14.174347}
+      - {x: -10.018848, y: 0, z: -9.815983}
+      - {x: -10.109925, y: 0, z: -6.815237}
+      - {x: -6.021265, y: 0, z: -3.9247684}
+      - {x: -3.6217217, y: 0, z: -2.120617}
+      - {x: -1.4196398, y: 0, z: -0.464931}
+      - {x: 2.6923614, y: 0, z: -0.22470927}
+      - {x: 4.792908, y: 0, z: 1.5580316}
+      - {x: 7.1594515, y: 0, z: 3.5665245}
+      - {x: 10.81656, y: 0, z: 7.159237}
+      - {x: 10.423626, y: 0, z: 10.238226}
+      - {x: 9.887118, y: 0, z: 14.442238}
+      - {x: 4.2422595, y: 0, z: 19.881798}
+      - {x: 0.005389709, y: 0, z: 19.77936}
+      - {x: -4.0750914, y: 0, z: 19.680704}
+      - {x: -9.231325, y: 0, z: 14.183632}
+      - {x: -9.572496, y: 0, z: 10.116241}
+      - {x: -9.826086, y: 0, z: 7.092992}
+      - {x: -6.07615, y: 0, z: 3.7950168}
+      - {x: -3.7493396, y: 0, z: 1.8481473}
+      - {x: -1.6161187, y: 0, z: 0.063256145}
+      - {x: 2.5458186, y: 0, z: -0.25490534}
+      isClosed: 1
+      space: 2
+      controlMode: 3
+      autoControlLength: 0.3
+      boundsUpToDate: 0
+      bounds:
+        m_Center: {x: 7.2028065, y: 0, z: -0.11262914}
+        m_Extent: {x: 6.4028063, y: 0.14433756, z: 0.31262913}
+      perAnchorNormalsAngle:
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      globalNormalsAngle: 0
+      flipNormals: 0
+    vertexPathUpToDate: 0
+    vertexPathMaxAngleError: 6.5
+    vertexPathMinVertexSpacing: 0.01
+    showTransformTool: 1
+    showPathBounds: 0
+    showPerSegmentBounds: 0
+    displayAnchorPoints: 1
+    displayControlPoints: 1
+    bezierHandleScale: 10
+    globalDisplaySettingsFoldout: 0
+    keepConstantHandleSize: 0
+    showNormalsInVertexMode: 0
+    showBezierPathInVertexMode: 1
+    showDisplayOptions: 1
+    showPathOptions: 1
+    showVertexPathDisplayOptions: 0
+    showVertexPathOptions: 1
+    showNormals: 0
+    showNormalsHelpInfo: 0
+    tabIndex: 0
+  initialized: 1
+--- !u!114 &2764897539855402909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982951806334259858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8381a4d8a2705c1bf679705d91448d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaypointSpacing: 5

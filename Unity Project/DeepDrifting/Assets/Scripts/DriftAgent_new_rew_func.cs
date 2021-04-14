@@ -161,7 +161,7 @@ public class DriftAgent_new_rew_func: Agent
 
                 //quick and dirty way of display current tire friction. I should probably make a nice GUI display on screen...
                 Instantiate(PointPopupPrefab, traj.transform.position, Camera.main.transform.rotation).GetComponent<pointPopup>().display(VPcontrol.tireFriction.settings.peak.y);
-            } 
+            }
             
 
         
