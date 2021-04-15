@@ -6,7 +6,7 @@ from stable_baselines3 import PPO
 
 
 #Settings
-model_name = "NetSmallToBigBEST"
+model_name = "best_model"
 sim_executable_path = "../Simulation executables/linux_x86_64 V2/simulation-v0.2"
 models_dir = "models/"
 

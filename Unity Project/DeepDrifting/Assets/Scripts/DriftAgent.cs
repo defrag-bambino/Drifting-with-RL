@@ -95,8 +95,8 @@ public class DriftAgent: Agent
 
         sensor.AddObservation(VPcontrol.data.Get(Channel.Vehicle, VehicleData.EngineRpm) / (1000.0f * VPcontrol.engine.maxRpm ));
 
-        //sensor.AddObservation(CurrentSteerDirection);
-        sensor.AddObservation(traj.getDistOfCarToPath(transform) / MaxDistFromPath);
+        sensor.AddObservation(CurrentSteerDirection);
+        //sensor.AddObservation(traj.getDistOfCarToPath(transform) / MaxDistFromPath);
     }
 
     public override void OnActionReceived(float[] vectorAction)
@@ -128,7 +128,7 @@ public class DriftAgent: Agent
         if (traj.getDistOfCarToPath(this.transform) >= MaxDistFromPath) //|| Mathf.Abs(imu.SideSlip) > 110f)
         {
             //print("too far from path, resetting..." + traj.getDistOfCarToPath(this.transform));
-            SetReward(-10f);
+            SetReward(-0.1f);
             EndEpisode();
         }
 
