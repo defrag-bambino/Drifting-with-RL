@@ -152,7 +152,7 @@ public class DriftAgent: Agent
                 else PathCurvatureFactor = 1f;//print("dont care");
 
                 //rew += 18f/20f * (Mathf.Abs(imu.SideSlip) / 90f) * PathCurvatureFactor;
-                rew += 19f/20f * PathCurvatureFactor * (1f / (1f + Mathf.Pow(Mathf.Abs((Mathf.Abs(imu.SideSlip) - 45f) / 15f),(2f*1.5f))));
+                rew += 19f/20f * PathCurvatureFactor * (1f / (1f + Mathf.Pow(Mathf.Abs((Mathf.Abs(imu.SideSlip) - 70f) / 45f),(2f*5f))));
                 //https://www.wolframalpha.com/input/?i=plot+1%2F+%281+%2B+abs%28%28x-c%29%2Fa%29%5E%282b%29%29+for+a%3D15%2Cb%3D1.5%2Cc%3D50+from+x%3D0+to+90
             //} 
 

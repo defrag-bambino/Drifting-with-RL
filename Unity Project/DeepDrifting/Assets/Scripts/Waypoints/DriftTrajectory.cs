@@ -93,7 +93,7 @@ public class DriftTrajectory : MonoBehaviour
         travelledDistanceOnPath = PathMathSupports.nfmod(travelledDistanceOnPath + WaypointSpacing, path.length);
 
         //calc the new orthg line
-        var values = PathMathSupports.calculateCurrentOrthogonalLine(getWaypointRelativeToCurrent(-1), getWaypointRelativeToCurrent(0), MaxDistFromPath);
+        var values = PathMathSupports.calculateCurrentOrthogonalLine(getWaypointRelativeToCurrentCONTINOUS(-0.1f), getWaypointRelativeToCurrent(0), MaxDistFromPath);
         currentWaypointOrthgLineStart = values.Item1;
         currentWaypointOrthgLineEnd = values.Item2;
     }
@@ -101,6 +101,11 @@ public class DriftTrajectory : MonoBehaviour
 
     public Vector3 getWaypointRelativeToCurrent(int increment){
         float pointDist = PathMathSupports.nfmod(travelledDistanceOnPath + (increment * WaypointSpacing), path.length); //stay within bounds
+        return path.GetPointAtDistance(directionFactor * pointDist);
+    }
+
+    private Vector3 getWaypointRelativeToCurrentCONTINOUS(float increment){
+        float pointDist = PathMathSupports.nfmod(travelledDistanceOnPath + (increment), path.length); //stay within bounds
         return path.GetPointAtDistance(directionFactor * pointDist);
     }
 

@@ -5756,8 +5756,8 @@ MonoBehaviour:
     frictionMultiplier: 1
   engine:
     idleRpm: 100
-    peakRpm: 15000
-    maxRpm: 15010
+    peakRpm: 40000
+    maxRpm: 40010
     idleRpmTorque: 106
     peakRpmTorque: 188
     idleRpmCurveBias: 0.95700055
@@ -6023,8 +6023,9 @@ MonoBehaviour:
   - {fileID: 2764897539855402909, guid: ae136cef84a3cea39b00b52bf92e9c5e, type: 3}
   - {fileID: 2764897539855402909, guid: d7b9d9b2a3416e8cb96261611b673de0, type: 3}
   - {fileID: 2764897539855402909, guid: a0759bda22d9e95bbbc9381b2119976d, type: 3}
+  - {fileID: 2764897539855402909, guid: 2b02ecfc38d6d1f45b0f8ba57887a349, type: 3}
   NextKnownWaypoints: 5
-  SteerSpeedDegPerSec: 450
+  SteerSpeedDegPerSec: 300
   PointPopupPrefab: {fileID: 4984086690947028806, guid: 1d0105f28e48a03c48412cf1332eeca0,
     type: 3}
   TireFrictionRandomMin: 0.7
